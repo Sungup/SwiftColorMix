@@ -13,8 +13,18 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+
+    updateColor()
   }
 
+  /// Outlets
+  @IBOutlet weak var colorView: UIView!
 
+  /// Controlls
+
+  /// Methods
+  func updateColor() {
+    colorView.backgroundColor = .black
+  }
 }
 
