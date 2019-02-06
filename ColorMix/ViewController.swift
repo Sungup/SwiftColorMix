@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
 
+    resetColor()
     updateColor()
   }
 
@@ -35,7 +36,24 @@ class ViewController: UIViewController {
     updateColor()
   }
 
+  @IBAction func resetView(_ sender: UIButton) {
+    resetColor()
+    updateColor()
+  }
+
   /// Methods
+  func resetColor() {
+    // Reset Switch
+    redSwitch.setOn(false, animated: true)
+    greenSwitch.setOn(false, animated: true)
+    blueSwitch.setOn(false, animated: true)
+
+    // Reset Slider
+    redSlider.setValue(0, animated: true)
+    greenSlider.setValue(0, animated: true)
+    blueSlider.setValue(0, animated: true)
+  }
+
   func updateColor() {
     let red = CGFloat(redSwitch.isOn ? redSlider.value : 0)
     let green = CGFloat(greenSwitch.isOn ? greenSlider.value : 0)
