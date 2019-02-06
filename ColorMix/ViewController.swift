@@ -22,18 +22,26 @@ class ViewController: UIViewController {
   @IBOutlet weak var redSwitch: UISwitch!
   @IBOutlet weak var greenSwitch: UISwitch!
   @IBOutlet weak var blueSwitch: UISwitch!
-
+  @IBOutlet weak var redSlider: UISlider!
+  @IBOutlet weak var greenSlider: UISlider!
+  @IBOutlet weak var blueSlider: UISlider!
+  
   /// Controlls
   @IBAction func switchChanged(_ sender: UISwitch) {
     updateColor()
   }
 
+  @IBAction func sliderChanged(_ sender: UISlider) {
+    updateColor()
+  }
+
   /// Methods
   func updateColor() {
-    colorView.backgroundColor = UIColor(red: redSwitch.isOn ? 1 : 0,
-                                        green: greenSwitch.isOn ? 1 : 0,
-                                        blue: blueSwitch.isOn ? 1 : 0,
+    let red = CGFloat(redSwitch.isOn ? redSlider.value : 0)
+    let green = CGFloat(greenSwitch.isOn ? greenSlider.value : 0)
+    let blue = CGFloat(blueSwitch.isOn ? blueSlider.value : 0)
+
+    colorView.backgroundColor = UIColor(red: red, green: green, blue: blue,
                                         alpha: 1)
   }
 }
-
