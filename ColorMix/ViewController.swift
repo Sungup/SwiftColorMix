@@ -12,9 +12,11 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
 
-    resetColor()
+    // Do any additional setup after loading the view, typically from a nib.
+    initializeView()
+    resetControls()
+    updateControls()
     updateColor()
   }
 
@@ -29,6 +31,7 @@ class ViewController: UIViewController {
   
   /// Controlls
   @IBAction func switchChanged(_ sender: UISwitch) {
+    updateControls()
     updateColor()
   }
 
@@ -36,13 +39,20 @@ class ViewController: UIViewController {
     updateColor()
   }
 
-  @IBAction func resetView(_ sender: UIButton) {
-    resetColor()
+  @IBAction func reset(_ sender: UIButton) {
+    resetControls()
+    updateControls()
     updateColor()
   }
 
   /// Methods
-  func resetColor() {
+  func initializeView() {
+    colorView.layer.borderColor = UIColor.black.cgColor
+    colorView.layer.borderWidth = 5
+    colorView.layer.cornerRadius = 20
+  }
+
+  func resetControls() {
     // Reset Switch
     redSwitch.setOn(false, animated: true)
     greenSwitch.setOn(false, animated: true)
@@ -52,6 +62,12 @@ class ViewController: UIViewController {
     redSlider.setValue(0, animated: true)
     greenSlider.setValue(0, animated: true)
     blueSlider.setValue(0, animated: true)
+  }
+
+  func updateControls() {
+    redSlider.isEnabled = redSwitch.isOn
+    greenSlider.isEnabled = greenSwitch.isOn
+    blueSlider.isEnabled = blueSwitch.isOn
   }
 
   func updateColor() {
