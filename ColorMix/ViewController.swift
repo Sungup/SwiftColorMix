@@ -19,12 +19,16 @@ class ViewController: UIViewController {
 
   /// Outlets
   @IBOutlet weak var colorView: UIView!
+  @IBOutlet weak var redSwitch: UISwitch!
 
   /// Controlls
+  @IBAction func switchChanged(_ sender: UISwitch) {
+    updateColor()
+  }
 
   /// Methods
   func updateColor() {
-    colorView.backgroundColor = .black
+    colorView.backgroundColor = redSwitch.isOn ? .red : .black
   }
 }
 
